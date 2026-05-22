@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seedy Studio</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&family=Courier+Prime:ital@0;1&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --green: #8BBD2A;
+      --green-muted: #7aaa1e;
+      --cream: #F6F1E4;
+      --ink: #3d3d2e;
+      --ink-light: #7a7860;
+      --nav-width: 210px;
+      --banner-height: 195px;
+    }
+
+    body {
+      background-color: var(--cream);
+      color: var(--ink);
+      font-family: 'Courier Prime', 'Courier New', monospace;
+      min-height: 100vh;
+      display: flex;
+    }
+
+    /* ── TOP BANNER ── */
+    .top-banner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--banner-height);
+      background-color: var(--cream);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── LEFT NAV ── */
+    nav {
+      position: fixed;
+      top: var(--banner-height);
+      left: 0;
+      width: var(--nav-width);
+      height: calc(100vh - var(--banner-height));
+      padding: 36px 28px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    nav a {
+      font-family: 'Reenie Beanie', cursive;
+      font-size: 34px;
+      font-weight: 400;
+      color: var(--green);
+      text-decoration: none;
+      line-height: 1.25;
+      letter-spacing: 0.02em;
+      transition: color 0.15s;
+      display: inline-block;
+      transform: rotate(-1deg);
+    }
+
+    nav a:nth-child(2) { transform: rotate(1.5deg); }
+    nav a:nth-child(3) { transform: rotate(-0.5deg); }
+    nav a:nth-child(4) { transform: rotate(1deg); }
+
+    nav a:hover {
+      color: var(--green-muted);
+    }
+
+    .nav-arrow {
+      margin-top: auto;
+      display: block;
+    }
+
+    .nav-arrow svg {
+      width: 52px;
+      height: auto;
+      fill: none;
+      stroke: var(--green);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .site-logo {
+      width: 155px;
+      height: auto;
+      display: block;
+      margin-top: 20px;
+    }
+
+    /* ── MAIN ── */
+    main {
+      margin-left: var(--nav-width);
+      padding: 44px 56px 60px 48px;
+      padding-top: calc(var(--banner-height) + 44px);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── CONTENT ROW ── */
+    .content-row {
+      display: flex;
+      gap: 52px;
+      align-items: flex-start;
+    }
+
+    .hero-image {
+      width: 440px;
+      height: auto;
+      flex-shrink: 0;
+      display: block;
+    }
+
+    /* right-hand text */
+    .hero-text {
+      flex: 1;
+      max-width: 400px;
+      padding-top: 4px;
+    }
+
+    .bio-tabs {
+      font-size: 14px;
+      color: var(--ink-light);
+      margin-bottom: 20px;
+    }
+
+    .bio-tabs .active {
+      text-decoration: underline;
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    .bio-tabs .tab {
+      cursor: pointer;
+    }
+
+    .bio-tabs .tab:hover {
+      color: var(--ink);
+    }
+
+    .bio-text {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--ink);
+      margin-bottom: 28px;
+    }
+
+    .bio-links {
+      font-size: 14px;
+      color: var(--ink-light);
+      margin-bottom: 12px;
+    }
+
+    .bio-links a {
+      color: var(--ink);
+      text-decoration: underline;
+    }
+
+    .bio-links a:hover {
+      color: var(--green);
+    }
+
+    .bio-contact {
+      font-size: 14px;
+      color: var(--ink-light);
+    }
+
+    .bio-contact a {
+      color: var(--ink);
+      text-decoration: underline;
+    }
+
+    .bio-contact a:hover {
+      color: var(--green);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav {
+        position: static;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 24px 20px 16px;
+        gap: 16px 24px;
+      }
+
+      .nav-arrow { display: none; }
+
+      main {
+        margin-left: 0;
+        padding: 20px 24px 48px;
+      }
+
+      .content-row {
+        flex-direction: column;
+      }
+
+      .hero-image {
+        width: 100%;
+        height: 340px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BANNER -->
+  <header class="top-banner">
+    <img src="SeedyStudio Logo.PNG" alt="Seedy Studio" class="site-logo" />
+  </header>
+
+  <!-- LEFT NAVIGATION -->
+  <nav>
+    <a href="#about">about</a>
+    <a href="#work">work</a>
+    <a href="#process">process</a>
+    <a href="#contact">contact</a>
+
+    <!-- hand-drawn style arrow SVG -->
+    <span class="nav-arrow">
+      <svg viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
+        <path d="M54 15 Q30 13 8 15" />
+        <path d="M18 6 Q8 14 18 24" />
+      </svg>
+    </span>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <div class="content-row">
+
+      <!-- Hero image -->
+      <img src="Dorts_headshot.JPG" alt="Seedy Studio" class="hero-image" />
+
+      <!-- Bio / intro text -->
+      <div class="hero-text">
+        <p class="bio-tabs">
+          [ <span class="active">very short</span> /
+          <span class="tab">kind of short</span> /
+          <span class="tab">really long</span> ]
+        </p>
+
+        <p class="bio-text">
+          Seedy Studio is a creative studio rooted in fashion styling
+          and interior design. We believe spaces and wardrobes should
+          feel lived in, intentional, and entirely yours — put together
+          in a way that doesn't feel try-hard. We work with a warmth
+          and curiosity that tends to show up in the work.
+        </p>
+
+        <p class="bio-links">
+          <a href="#">portfolio</a> (pdf) &nbsp;|&nbsp; <a href="#">press</a> (pdf)
+        </p>
+
+        <p class="bio-contact">
+          contact: <a href="mailto:hello@seedystudio.com">hello@seedystudio.com</a>
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>
